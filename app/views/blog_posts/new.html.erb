@@ -1,0 +1,19 @@
+<h1>New Blog Post</h1>
+
+<!--this method allows us to pass an object and it spits out a form builder object into the pipes. form_builder is the object spit out by form_for-->
+<%= form_for(@blog_post) do |form_builder|%>
+
+	<!--title and body are the attributes inside blog_post_var-->
+	<div>
+		<%= form_builder.label(:title) %><br />
+		<%= form_builder.text_field(:title) %>
+	</div>
+
+	<div>
+		<%= form_builder.label(:body) %><br />
+		<%= form_builder.text_area(:body) %>
+	</div>
+
+	<%= form_builder.submit %> <!--this is a submit button whiich sends a POST request to (/blog_posts) the url specified when we so showsource on the html page-->
+
+<% end %>

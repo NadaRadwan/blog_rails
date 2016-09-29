@@ -1,0 +1,23 @@
+<h1>Blog Posts</h1>
+
+<!--we are going to embed ruby code in here by using server side code tags-->
+
+<!--we can access instance variable defined in the controller from the view-->
+<h7>There are <%= @blog_posts_array.size %> blog posts.</h7>
+
+<div>
+	<!--add a link to create a new blog post-->
+	<a href="/blog_posts/new">New Blog Post</a>
+</div>
+
+<!--we dont use the %= below for the loop because we never put the = unless we want it to be printed to the html page.-->
+<% @blog_posts_array.each do |post| %>
+	<h2><%= post.title %></h2>
+	<p><%= post.body %></p>
+	<a href="/blog_posts/<%= post.id %>">View Full Post</a>
+	<a href="/blog_posts/<%= post.id %>/edit">Edit Post</a>
+	<a href="/blog_posts/<%= post.id %>" data-method="delete">Destroy</a>
+	<!--links send a get request. They have no way of sending a delete request. Rails fills in the gaps and says as long as you put a deta method variable on the link, ill cnvert it to a delete request-->
+<% end %>
+
+
